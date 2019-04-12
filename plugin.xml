@@ -57,7 +57,13 @@
 
     <!-- android -->
     <platform name="android">
-        <framework src="src/android/bgmode.gradle" custom="true" type="gradleReference"/>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+        </config-file>
+
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="BackgroundMode">
                 <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode"/>
@@ -71,12 +77,8 @@
             <preference name="KeepRunning" value="true" />
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="application">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
-        </config-file>
-
-        <config-file target="AndroidManifest.xml" parent="/manifest">
-            <uses-permission android:name="android.permission.WAKE_LOCK" />
         </config-file>
 
         <source-file
