@@ -70,7 +70,7 @@
             <preference name="KeepRunning" value="true" />
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <config-file target="AndroidManifest.xml" parent="application">
             <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
         </config-file>
 
